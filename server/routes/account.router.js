@@ -2,15 +2,37 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
-  // GET route code here
+
+// GET for grabbing the folders from the database
+// router.get('/', (req, res) => {
+  
+// });
+// get for grabbing the accounts from the database
+router.get('/get/accounts', (req, res) => {
+
+  console.log(req.user);
+  if (req.isAuthenticated()) {
+    let userId = Number(req.user.id)
+    console.log(userId);
+    const queryText = `SELECT "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name" FROM "accounts"
+    JOIN "folders" ON "folders"."id" = "accounts"."folder_id"
+    JOIN "user" ON "folders"."user_id" = 4
+    GROUP BY "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
+    pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows)
+    })
+    .catch((error) => {
+      console.log('rut ro scoob', error);
+    })
+  } else {
+    res.sendStatus(403);
+  }
 });
 
+// router for adding an account from the client side to the database
 router.post('/', (req, res) => {
-
   if (req.isAuthenticated()) {
     console.log(req.body);
     const username = req.body.username;

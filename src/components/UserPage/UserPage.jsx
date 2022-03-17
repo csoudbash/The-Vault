@@ -1,7 +1,8 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
 import './UserPage.css'
 import AddAccountForm from './AddAccountForm/AddAccountForm';
 import Button from '@mui/material/Button';
@@ -10,7 +11,13 @@ import Footer from '../Footer/Footer';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch({
+      type: 'GET_ACCOUNTS'
+    })
+  }, [])
   
   return (
     <div className='passwordList'>
