@@ -17,6 +17,10 @@ function RegisterForm() {
         password: password,
       },
     });
+      // insert dispatch to add new folder to folders table for the newly created user.
+    
+
+
   }; // end registerUser
 
   return (
