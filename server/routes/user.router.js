@@ -8,10 +8,10 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-router.post('/addfolder', (req,res) => {
+// router.post('/addfolder', (req,res) => {
 // console.log('hello');
-let userId = req.user
-console.log(req);
+// let userId = Number(req.user.id)
+// console.log(req.user.id);
 // const queryText = `INSERT INTO "folders" ("user_id", "folder_name")
 // VALUES ($1, 'none');`;
 // pool
@@ -20,7 +20,7 @@ console.log(req);
 //     .catch((error) => {
 //       console.log(error, 'rut ro scoob');
 //     })
-})
+// })
 
 
 // Handles Ajax request for user information if user is authenticated
@@ -40,7 +40,9 @@ router.post('/register', (req, res, next) => {
     VALUES ($1, $2) RETURNING id`;
   pool
     .query(queryText, [username, password])
-    .then(() => res.sendStatus(201))
+    .then((res) => {
+     
+    })
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);

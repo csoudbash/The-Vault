@@ -13,13 +13,13 @@ router.get('/get/accounts', (req, res) => {
   console.log(req.user);
   if (req.isAuthenticated()) {
     let userId = Number(req.user.id)
-    console.log(userId);
+    // console.log(userId);
     const queryText = `SELECT "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name" FROM "accounts"
     JOIN "folders" ON "folders"."id" = "accounts"."folder_id"
-    JOIN "user" ON "folders"."user_id" = 4
+    JOIN "user" ON "folders"."user_id" = $1
     GROUP BY "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
     pool
-    .query(queryText)
+    .query(queryText, [userId])
     .then((result) => {
       res.send(result.rows)
     })
