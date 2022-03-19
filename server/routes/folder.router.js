@@ -26,11 +26,11 @@ router.post('/', (req, res) => {
 
  router.get('/', (req, res) => {
 
-        console.log(req.user);
+        // console.log(req.user);
         if (req.isAuthenticated()) {
-            console.log('hello');
+            // console.log('hello');
           let userId = Number(req.user.id)
-          console.log(userId);
+        //   console.log(userId);
           const queryText = `SELECT "id", "user_id", "folder_name" FROM "folders" WHERE "user_id" = $1;`;
           pool
           .query(queryText, [userId])

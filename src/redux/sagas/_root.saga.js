@@ -6,6 +6,7 @@ import sendAddedAccountSaga from './addaccount.saga.js'
 import getAccountSaga from './getAccount.saga';
 import sendNewFolder from './addfolder.saga';
 import getFolderSaga from './getfolders.saga';
+import updateAccountSaga from './updateaccount.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -22,5 +23,6 @@ export default function* rootSaga() {
     getAccountSaga(),
     sendNewFolder(),
     getFolderSaga(),
+    updateAccountSaga(),
   ]);
 }
