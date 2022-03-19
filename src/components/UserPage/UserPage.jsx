@@ -43,7 +43,7 @@ function UserPage() {
         </div>
 
         <AddAccountForm />
-        <AddFolderForm />
+        {/* <AddFolderForm /> */}
 
         <Footer />
       </div>
