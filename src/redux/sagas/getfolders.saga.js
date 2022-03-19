@@ -4,9 +4,9 @@ import axios from 'axios';
 function* getFolders() {
 
     try {
-        const response = yield axios.get('api/folder');
+        const response = yield axios.get('/api/folder');
         console.log('hello');
-        // yield put ({ type: 'SET_FOLDERS', payload: response.data });
+        yield put ({ type: 'SET_FOLDERS', payload: response.data });
     }
     catch {
         console.log('failed');

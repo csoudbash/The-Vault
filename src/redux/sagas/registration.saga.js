@@ -17,6 +17,7 @@ function* registerUser(action) {
     yield put({ type: 'SET_TO_LOGIN_MODE' });
 
     yield axios.post('/api/user/addfolder');
+    
   } catch (error) {
     console.log('Error with user registration:', error);
     yield put({ type: 'REGISTRATION_FAILED' });

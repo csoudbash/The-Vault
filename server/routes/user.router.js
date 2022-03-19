@@ -15,11 +15,11 @@ const router = express.Router();
 // const queryText = `INSERT INTO "folders" ("user_id", "folder_name")
 // VALUES ($1, 'none');`;
 // pool
-//     .query(queryText, [userId])
-//     .then(() => res.sendStatus(201))
-//     .catch((error) => {
-//       console.log(error, 'rut ro scoob');
-//     })
+//   .query(queryText, [userId])
+//   .then(() => res.sendStatus(201))
+//   .catch((error) => {
+//     console.log(error, 'rut ro scoob');
+//   })
 // })
 
 
@@ -40,13 +40,25 @@ router.post('/register', (req, res, next) => {
     VALUES ($1, $2) RETURNING id`;
   pool
     .query(queryText, [username, password])
-    .then((res) => {
-     
-    })
-    .catch((err) => {
-      console.log('User registration failed: ', err);
-      res.sendStatus(500);
-    });
+    .then(
+
+      (response) => {
+        let userId = response.rows[0].id
+        const queryText = `INSERT INTO "folders" ("user_id", "folder_name") VALUES ($1, 'none');`;
+        pool
+          .query(queryText, [userId])
+          .then(() => res.sendStatus(201))
+          .catch((error) => {
+            console.log(error, 'folder adding failed');
+            res.sendStatus(500);
+          })
+      })
+  // send none folder to databse here by doing
+
+  .catch((err) => {
+    console.log('User registration failed: ', err);
+    res.sendStatus(500);
+  });
 });
 
 // Handles login form authenticate/login POST
