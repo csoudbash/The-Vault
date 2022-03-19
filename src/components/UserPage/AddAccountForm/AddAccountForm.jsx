@@ -16,9 +16,9 @@ function AddAccountForm() {
     const [password, setPassword] = useState('');
     const [accountDescription, setAccountDescription] = useState('');
     const [notes, setNotes] = useState('');
-    const [folder, setFolder] = useState('');
+    // const [folder, setFolder] = useState('');
 
-    const folders = useSelector((store) => store.folders.FoldersReducer)
+    // const folders = useSelector((store) => store.folders.FoldersReducer)
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -35,7 +35,7 @@ function AddAccountForm() {
                 password,
                 accountDescription,
                 notes,
-                folder,
+                // folder,
             }
         })
     }
@@ -103,7 +103,7 @@ function AddAccountForm() {
                     />
 
                     <InputLabel id="folder-label">Folder</InputLabel>
-                    <Select
+                    {/* <Select
                         labelId="folder-label"
                         id="folders"
                         // open={open}
@@ -120,7 +120,7 @@ function AddAccountForm() {
                                 </div>
                             ))}
                         </div>
-                    </Select>
+                    </Select> */}
 
 
                     <Button onClick={handleSubmit} variant="outlined">Submit Account</Button>

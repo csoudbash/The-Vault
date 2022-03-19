@@ -23,7 +23,7 @@ function AccountCard({ account }) {
                 <Typography>{account.username}</Typography>
                 <Typography>{account.password}</Typography>
                 <Typography>{account.notes}</Typography>
-                <Typography>{account.folder_name}</Typography>
+                {/* <Typography>{account.folder_name}</Typography> */}
                 <Typography>{account.account_description}</Typography>
                 <Button onClick={handleOpen}>Edit</Button>
             </Grid>
