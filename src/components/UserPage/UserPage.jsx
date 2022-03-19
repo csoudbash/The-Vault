@@ -9,32 +9,45 @@ import AddFolderForm from './AddFolderForm/AddFolderForm';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Footer from '../Footer/Footer';
+import { Typography } from '@mui/material';
+import AccountCard from './AccountCard/AccountCard';
+import EditAccount from './EditAccount/EditAccount';
 function UserPage() {
-  
+
   const user = useSelector((store) => store.user);
+  const accounts = useSelector((store) => store.accounts.AccountsReducer)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
-      dispatch({
-        type: 'GET_ACCOUNTS'
-      })
-      dispatch({
-        type: 'GET_FOLDERS'
-      })
-    
-
+    dispatch({
+      type: 'GET_ACCOUNTS'
+    })
+    dispatch({
+      type: 'GET_FOLDERS'
+    })
   }, [])
-  
+
   return (
-    <div className='passwordList'>
-      <p>folder 1</p>
-      <p>folder 2</p>
-     
+    <>
+      <div className='passwordList'>
+        <div>
+          {accounts.map((account, i) => (
+            <div key={i}>
+              {/* <p>{account.username}</p> */}
+              <AccountCard
+                // key={i}
+                account={account}
+              />
+            </div>
+          ))}
+        </div>
+
         <AddAccountForm />
-        <AddFolderForm/>
-        <Footer/>
-    </div>
+        {/* <AddFolderForm /> */}
+
+        <Footer />
+      </div>
+    </>
   );
 }
 

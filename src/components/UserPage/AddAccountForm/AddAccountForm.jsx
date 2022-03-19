@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useState } from "react";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -16,9 +16,9 @@ function AddAccountForm() {
     const [password, setPassword] = useState('');
     const [accountDescription, setAccountDescription] = useState('');
     const [notes, setNotes] = useState('');
-    // the folder data being sent will be the ID from the selected already existing folder so that it can be added to the database properly. 
-    //this is so that when i retrieve that data again, we cant properly match the account to the correct folder to render onto the DOM
-    const [folder, setFolder] = useState('');
+    // const [folder, setFolder] = useState('');
+
+    // const folders = useSelector((store) => store.folders.FoldersReducer)
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -35,7 +35,7 @@ function AddAccountForm() {
                 password,
                 accountDescription,
                 notes,
-                folder,
+                // folder,
             }
         })
     }
@@ -49,9 +49,9 @@ function AddAccountForm() {
         border: '2px solid #000',
         boxShadow: 24,
         p: 6, //padding
-      };
+    };
 
-    
+
     return (
         <>
             <Button onClick={handleOpen}>Add Account</Button>
@@ -103,7 +103,7 @@ function AddAccountForm() {
                     />
 
                     <InputLabel id="folder-label">Folder</InputLabel>
-                    <Select
+                    {/* <Select
                         labelId="folder-label"
                         id="folders"
                         // open={open}
@@ -113,14 +113,19 @@ function AddAccountForm() {
                         label="folder"
                         onChange={(event) => setFolder(event.target.value)}
                     >
-                        <MenuItem value={0}> <em>None</em> </MenuItem> 
-                        <MenuItem value={1}> Email </MenuItem>
-                    </Select>
+                        <div>
+                            {folders.map((folder, i) => (
+                                <div key={i}>
+                                    <MenuItem value={folder.id}> <em>{folder.folder_name}</em> </MenuItem>
+                                </div>
+                            ))}
+                        </div>
+                    </Select> */}
 
-                   
+
                     <Button onClick={handleSubmit} variant="outlined">Submit Account</Button>
                 </Box>
-                
+
             </Modal>
         </>
     )

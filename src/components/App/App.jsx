@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import EditAccount from '../UserPage/EditAccount/EditAccount';
 
 import './App.css';
 
@@ -110,12 +111,16 @@ function App() {
             }
           </Route>
 
+          <Route exact path='/editview'>
+            <EditAccount />
+          </Route>
+
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
           </Route>
         </Switch>
-        
+
       </div>
     </Router>
   );

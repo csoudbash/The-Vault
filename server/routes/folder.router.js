@@ -22,26 +22,27 @@ router.post('/', (req, res) => {
     } else {
         res.sendStatus(403)
     }
+});
 
  router.get('/', (req, res) => {
 
-        // console.log(req.user);
-        // if (req.isAuthenticated()) {
+        console.log(req.user);
+        if (req.isAuthenticated()) {
             console.log('hello');
-        //   let userId = Number(req.user.id)
-        //   console.log(userId);
-        //   const queryText = `SELECT "id", "user_id", "folder_name" FROM "folders" WHERE "user_id" = $1;`;
-        //   pool
-        //   .query(queryText, [userId])
-        //   .then((result) => {
-        //     res.send(result.rows)
-        //   })
-        //   .catch((error) => {
-        //     console.log('rut ro scoob', error);
-        //   })
-        // } else {
-        //   res.sendStatus(403);
-        // }
+          let userId = Number(req.user.id)
+          console.log(userId);
+          const queryText = `SELECT "id", "user_id", "folder_name" FROM "folders" WHERE "user_id" = $1;`;
+          pool
+          .query(queryText, [userId])
+          .then((result) => {
+            res.send(result.rows)
+          })
+          .catch((error) => {
+            console.log('rut ro scoob', error);
+          })
+        } else {
+          res.sendStatus(403);
+        }
       });
-});
+    
 module.exports = router;
