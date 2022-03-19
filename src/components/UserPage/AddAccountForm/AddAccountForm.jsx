@@ -102,8 +102,8 @@ function AddAccountForm() {
                         onChange={(event) => setNotes(event.target.value)}
                     />
 
-                    <InputLabel id="folder-label">Folder</InputLabel>
-                    {/* <Select
+                    {/* <InputLabel id="folder-label">Folder</InputLabel>
+                    <Select
                         labelId="folder-label"
                         id="folders"
                         // open={open}

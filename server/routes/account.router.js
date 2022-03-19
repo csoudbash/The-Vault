@@ -14,10 +14,10 @@ router.get('/get/accounts', (req, res) => {
   if (req.isAuthenticated()) {
     let userId = Number(req.user.id)
     // console.log(userId);
-    const queryText = `SELECT "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name" FROM "accounts"
+    const queryText = `SELECT "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name" FROM "accounts"
     JOIN "folders" ON "folders"."id" = "accounts"."folder_id" 
     JOIN "user" ON "folders"."user_id" = $1
-    GROUP BY "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
+    GROUP BY "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
     pool
     .query(queryText, [userId])
     .then((result) => {
@@ -34,7 +34,7 @@ router.get('/get/accounts', (req, res) => {
 // router for adding an account from the client side to the database
 router.post('/', (req, res) => {
   if (req.isAuthenticated()) {
-    console.log(req.body);
+    // console.log(req.body);
     const username = req.body.username;
     const password = req.body.password;
     const accountDescription = req.body.accountDescription;
@@ -54,5 +54,33 @@ router.post('/', (req, res) => {
       res.sendStatus(403)
     }
   })
+
+
+  // Update this single Account
+  router.put('/:id', (req, res) => {
+    // console.log(req.params.id);
+    // console.log(req.body);
+    if (req.isAuthenticated()) {
+       let username = req.body.newUsername;
+       let password = req.body.newPassword;
+       let accountDescription = req.body.newAccountDescription;
+       let notes = req.body.newNotes;
+    const idToUpdate = req.params.id;
+    const sqlText = `UPDATE "accounts" SET "username" = $1, "password" = $2, "notes" = $3, "account_description" = $4  WHERE "id" = $5;`;
+    pool.query(sqlText, [username, password, notes, accountDescription, idToUpdate])
+        .then((result) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error making database query ${sqlText}`, error);
+            res.sendStatus(500);
+        });
+
+      } else{
+        res.sendStatus(403);
+      }
+
+});
+  
 
 module.exports = router;

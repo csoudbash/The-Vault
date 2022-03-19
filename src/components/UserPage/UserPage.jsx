@@ -35,7 +35,7 @@ function UserPage() {
             <div key={i}>
               {/* <p>{account.username}</p> */}
               <AccountCard
-                // key={i}
+                key={i}
                 account={account}
               />
             </div>
