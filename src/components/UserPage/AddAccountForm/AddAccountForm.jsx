@@ -44,17 +44,17 @@ function AddAccountForm() {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '70%',
+        width: '50%',
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
-        p: 4,
+        p: 6, //padding
       };
 
     
     return (
         <>
-            <Button sx={style} onClick={handleOpen}>Add Account</Button>
+            <Button onClick={handleOpen}>Add Account</Button>
             <Modal
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -113,13 +113,14 @@ function AddAccountForm() {
                         label="folder"
                         onChange={(event) => setFolder(event.target.value)}
                     >
-                        <MenuItem value={0}> <em>None</em> </MenuItem>
+                        <MenuItem value={0}> <em>None</em> </MenuItem> 
                         <MenuItem value={1}> Email </MenuItem>
                     </Select>
 
+                   
                     <Button onClick={handleSubmit} variant="outlined">Submit Account</Button>
-
                 </Box>
+                
             </Modal>
         </>
     )

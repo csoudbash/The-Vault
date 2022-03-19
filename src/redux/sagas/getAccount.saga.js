@@ -5,7 +5,7 @@ function* getAccounts() {
     
     try{
         console.log('hello');
-        const response = yield axios.get('/api/account//get/accounts');
+        const response = yield axios.get('/api/account/get/accounts');
         console.log(response.data);
         yield put ({ type: 'SET_ACCOUNTS', payload: response.data });
     }
