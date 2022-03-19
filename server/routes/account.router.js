@@ -15,7 +15,7 @@ router.get('/get/accounts', (req, res) => {
     let userId = Number(req.user.id)
     // console.log(userId);
     const queryText = `SELECT "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name" FROM "accounts"
-    JOIN "folders" ON "folders"."id" = "accounts"."folder_id"
+    JOIN "folders" ON "folders"."id" = "accounts"."folder_id" 
     JOIN "user" ON "folders"."user_id" = $1
     GROUP BY "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
     pool
