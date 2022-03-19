@@ -42,10 +42,17 @@ function EditAccount() {
                 newNotes,
             }
         })
+        // handleClose();
         history.push('/user');
     }
+
     const handleDelete = () => {
-        
+        dispatch({
+            type:'DELETE_ACCOUNT',
+            payload: id,
+        })
+        // handleClose();
+        history.push('/user');
     }
 
     const style = {
@@ -131,7 +138,7 @@ function EditAccount() {
 
 
                 <Button onClick={handleSubmit} variant="outlined">conditionally rendered edit button</Button>
-                <Button onClick={handleDelete} variant="outlined">conditionally rendered edit button</Button>
+                <Button onClick={handleDelete} variant="outlined">Delete</Button>
             </Box>
             {/* </Modal> */}
 
