@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 
 function AddFolderForm() {// function for adding a new folder to the database for retrieval
 
-    
+
     const [folder, setFolder] = useState('');
 
     const [open, setOpen] = React.useState(false);
@@ -24,7 +24,7 @@ function AddFolderForm() {// function for adding a new folder to the database fo
     const handleSubmit = () => {
         dispatch({
             type: 'SEND_NEW_FOLDER',
-            payload: {folder: folder}
+            payload: { folder: folder }
         })
     }
 
@@ -39,9 +39,9 @@ function AddFolderForm() {// function for adding a new folder to the database fo
         border: '2px solid #000',
         boxShadow: 24,
         p: 6, //padding
-      };
+    };
 
-    
+
     return (
         <>
             <Button onClick={handleOpen}>Add New Folder</Button>
@@ -68,10 +68,10 @@ function AddFolderForm() {// function for adding a new folder to the database fo
                         onChange={(event) => setFolder(event.target.value)}
                     />
 
-                   
-                    <Button sx = {{ margin: 5 }} onClick={handleSubmit} variant="outlined">Add Folder</Button>
+
+                    <Button sx={{ margin: 5 }} onClick={handleSubmit} variant="outlined">Add Folder</Button>
                 </Box>
-                
+
             </Modal>
         </>
     )

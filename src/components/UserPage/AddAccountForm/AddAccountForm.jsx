@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
-
+import Grid from '@mui/material/Grid';
 function AddAccountForm() {
 
     const [username, setUsername] = useState('');
@@ -67,63 +67,70 @@ function AddAccountForm() {
                     noValidate
                     autoComplete="off"
                 >
-                    <Typography id="modal-modal-title" variant="h6" component="h2"> Add Account </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}> Enter in the Account you would like to add below </Typography>
-                    <TextField
-                        sx={{ mt: 2 }}
-                        required
-                        id="outlined-required"
-                        label="Username"
-                        value={username}
-                        onChange={(event) => setUsername(event.target.value)}
-                    />
-                    <TextField
-                        sx={{ mt: 2 }}
-                        required
-                        id="outlined-password-input"
-                        label="Password"
-                        value={password}
-                        onChange={(event) => setPassword(event.target.value)}
-                    />
-                    <TextField
-                        sx={{ mt: 2 }}
-                        required
-                        id="outlined-password-input"
-                        label="Account Description"
-                        value={accountDescription}
-                        onChange={(event) => setAccountDescription(event.target.value)}
-                    />
-                    <TextField
-                        sx={{ mt: 2 }}
-                        required
-                        id="outlined-password-input"
-                        label="Notes"
-                        value={notes}
-                        onChange={(event) => setNotes(event.target.value)}
-                    />
-
-                    {/* <InputLabel id="folder-label">Folder</InputLabel>
-                    <Select
-                        labelId="folder-label"
-                        id="folders"
-                        // open={open}
-                        // onClose={handleClose}
-                        // onOpen={handleOpen}
-                        value={folder}
-                        label="folder"
-                        onChange={(event) => setFolder(event.target.value)}
+                    <Grid
+                        container
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
                     >
-                        <div>
-                            {folders.map((folder, i) => (
-                                <div key={i}>
-                                    <MenuItem value={folder.id}> <em>{folder.folder_name}</em> </MenuItem>
-                                </div>
-                            ))}
+                        <Typography id="modal-modal-title" variant="h6" component="h2"> Add Account </Typography>
+                        <Typography id="modal-modal-description" sx={{ mt: 2 }}> Enter in the Account you would like to add below </Typography>
+                        <TextField
+                            sx={{ mt: 2 }}
+                            required
+                            id="outlined-required"
+                            label="Username"
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
+                        />
+                        <TextField
+                            sx={{ mt: 2 }}
+                            required
+                            id="outlined-password-input"
+                            label="Password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                        />
+                        <TextField
+                            sx={{ mt: 2 }}
+                            required
+                            id="outlined-password-input"
+                            label="Account Description"
+                            value={accountDescription}
+                            onChange={(event) => setAccountDescription(event.target.value)}
+                        />
+                        <TextField
+                            sx={{ mt: 2 }}
+                            required
+                            id="outlined-password-input"
+                            label="Notes"
+                            value={notes}
+                            onChange={(event) => setNotes(event.target.value)}
+                        />
+
+                        {/* <InputLabel id="folder-label">Folder</InputLabel>
+                    <Select
+                    labelId="folder-label"
+                    id="folders"
+                    // open={open}
+                    // onClose={handleClose}
+                    // onOpen={handleOpen}
+                    value={folder}
+                    label="folder"
+                    onChange={(event) => setFolder(event.target.value)}
+                    >
+                    <div>
+                    {folders.map((folder, i) => (
+                        <div key={i}>
+                        <MenuItem value={folder.id}> <em>{folder.folder_name}</em> </MenuItem>
+                        </div>
+                        ))}
                         </div>
                     </Select> */}
 
 
-                    <Button onClick={handleSubmit} variant="outlined">Submit Account</Button>
+                        <Button onClick={handleSubmit} variant="outlined">Submit Account</Button>
+                    </Grid>
                 </Box>
 
             </Modal>
