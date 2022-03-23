@@ -15,10 +15,12 @@ import swal from 'sweetalert';
 
 function EditAccount() {
 
+    
     const [newUsername, setNewUsername] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [newAccountDescription, setNewAccountDescription] = useState('');
     const [newNotes, setNewNotes] = useState('');
+    const [newUrl, setNewUrl] = useState('');
     // const [newFolder, setNewFolder] = useState('');
 
     // const folders = useSelector((store) => store.folders.FoldersReducer);
@@ -50,8 +52,10 @@ function EditAccount() {
                         newPassword,
                         newAccountDescription,
                         newNotes,
+                        newUrl,
                     }
                 })
+                history.push('/user');
                 swal("The Account has been updated!", {
                 icon: "success"
               });
@@ -60,7 +64,6 @@ function EditAccount() {
             }
         });
         // handleClose();
-        history.push('/user');
     }
 
     const handleDelete = () => {
@@ -101,7 +104,7 @@ function EditAccount() {
                 autoComplete="off"
             >
                 <Typography id="modal-modal-title" variant="h6" component="h2"> View/ Edit account </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}> yes </Typography>
+                {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>  </Typography> */}
                 <TextField
                     sx={{ mt: 2 }}
                     required
@@ -120,7 +123,6 @@ function EditAccount() {
                 />
                 <TextField
                     sx={{ mt: 2 }}
-                    required
                     id="outlined-password-input"
                     label="Account Description"
                     defaultValue={accountToEdit.account_description}
@@ -128,12 +130,19 @@ function EditAccount() {
                 />
                 <TextField
                     sx={{ mt: 2 }}
-                    required
                     id="outlined-password-input"
                     label="Notes"
                     defaultValue={accountToEdit.notes}
                     onChange={(event) => setNewNotes(event.target.value)}
                 />
+                 <TextField
+                    sx={{ mt: 2 }}
+                    id="outlined-password-input"
+                    label="Url"
+                    defaultValue={accountToEdit.url}
+                    onChange={(event) => setNewUrl(event.target.value)}
+                />
+
 
                 {/* <InputLabel id="folder-label">Folder</InputLabel>
                     <Select

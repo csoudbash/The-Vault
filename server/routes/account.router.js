@@ -14,7 +14,7 @@ router.get('/get/accounts', (req, res) => {
   if (req.isAuthenticated()) {
     let userId = Number(req.user.id)
     // console.log(userId);
-    const queryText = `SELECT "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name" FROM "accounts"
+    const queryText = `SELECT "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "url", "folder_name" FROM "accounts"
     JOIN "folders" ON "folders"."id" = "accounts"."folder_id" 
     JOIN "user" ON "folders"."user_id" = $1
     GROUP BY "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
@@ -34,17 +34,18 @@ router.get('/get/accounts', (req, res) => {
 // router for adding an account from the client side to the database
 router.post('/', (req, res) => {
   if (req.isAuthenticated()) {
-    // console.log(req.body);
+    console.log(req.body);
     const username = req.body.username;
     const password = req.body.password;
     const accountDescription = req.body.accountDescription;
     const notes = req.body.notes
-    const folder = 1// req.body.folder    currently set to 1 because 1 is a folder connected to the csoudbash account. this will need to be addressed later. 
+    const folder = 1// req.body.folder currently set to 1 because 1 is a folder connected to the csoudbash account. this will need to be addressed later. 
+    const accountUrl = req.body.url
 
-    const queryText = `INSERT INTO "accounts" ("account_description", "username", "password", "notes", "folder_id")
-  VALUES ($1, $2, $3, $4, $5);`;
+    const queryText = `INSERT INTO "accounts" ("account_description", "username", "password", "notes", "url", "folder_id")
+  VALUES ($1, $2, $3, $4, $5, $6);`;
     pool
-      .query(queryText, [accountDescription, username, password, notes, folder])
+      .query(queryText, [accountDescription, username, password, notes, accountUrl, folder])
       .then(() => res.sendStatus(201))
       .catch((error) => {
         console.log('Item Posted Failed: ', error);
@@ -65,10 +66,11 @@ router.put('/:id', (req, res) => {
     let password = req.body.newPassword;
     let accountDescription = req.body.newAccountDescription;
     let notes = req.body.newNotes;
+    let url = req.body.newUrl;
 
     const idToUpdate = req.params.id;
-    const sqlText = `UPDATE "accounts" SET "username" = $1, "password" = $2, "notes" = $3, "account_description" = $4  WHERE "id" = $5;`;
-    pool.query(sqlText, [username, password, notes, accountDescription, idToUpdate])
+    const sqlText = `UPDATE "accounts" SET "username" = $1, "password" = $2, "notes" = $3, "account_description" = $4 , "url" = $5 WHERE "id" = $6;`;
+    pool.query(sqlText, [username, password, notes, accountDescription, url, idToUpdate])
       .then((result) => {
         res.sendStatus(200);
       })

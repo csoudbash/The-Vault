@@ -16,6 +16,7 @@ function AddAccountForm() {
     const [password, setPassword] = useState('');
     const [accountDescription, setAccountDescription] = useState('');
     const [notes, setNotes] = useState('');
+    const [url, setUrl]= useState('');
     // const [folder, setFolder] = useState('');
 
     // const folders = useSelector((store) => store.folders.FoldersReducer)
@@ -35,6 +36,7 @@ function AddAccountForm() {
                 password,
                 accountDescription,
                 notes,
+                url,
                 // folder,
             }
         })
@@ -99,6 +101,13 @@ function AddAccountForm() {
                             value={accountDescription}
                             onChange={(event) => setAccountDescription(event.target.value)}
                         />
+                            <TextField
+                                sx={{ mt: 2 }}
+                                required
+                                label="Login Url"
+                                value={url}
+                                onChange={(event) => setUrl(event.target.value)}
+                            />
                         <TextField
                             sx={{ mt: 2 }}
                             required
@@ -107,7 +116,6 @@ function AddAccountForm() {
                             value={notes}
                             onChange={(event) => setNotes(event.target.value)}
                         />
-
                         {/* <InputLabel id="folder-label">Folder</InputLabel>
                     <Select
                     labelId="folder-label"

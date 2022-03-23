@@ -20,7 +20,7 @@ function AccountCard({ account }) {
         })
         history.push('/editview')
     }
-    account.url = 'https://www.facebook.com/';
+    // account.url = 'https://www.facebook.com/';
     return (
         <>
             <Grid item xs={3} m={4} >
