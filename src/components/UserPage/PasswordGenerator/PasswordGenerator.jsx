@@ -19,60 +19,79 @@ function PasswordGenerator() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const [value, setValue] = useState(8)
+
     const style = {
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '50%',
-        height: '50%',
+        width: '70%',
+        height: '70%',
         bgcolor: 'background.paper',
         border: '2px solid #000',
         boxShadow: 24,
         p: 6, //padding
     };
 
+    const handleSubmit = () => {
+        console.log('hello!');
+    }
+
+
     return (
         <>
             <div id='passwordGeneratorBody'>
 
-                
-                    <Button onClick={handleOpen}>Generate Password</Button>
-                    <Modal
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                        open={open}
-                        onClose={handleClose}
+
+                <Button onClick={handleOpen}>Password Generator</Button>
+                <Modal
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    open={open}
+                    onClose={handleClose}
+                >
+                    <Box
+                        component="form"
+                        sx={style}
+                        id='passwordGenerator'
+                        noValidate
+                        autoComplete="off"
                     >
-                        <Box
-                            component="form"
-                            sx={style}
-                            id ='passwordGenerator'
-                            noValidate
-                            autoComplete="off"
-                        >
 
-                            <Typography id="modal-modal-title" variant="h6" component="h2"> Password Generator </Typography>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}> Select the criteria for a random password to be made </Typography>
+                        <Typography id="modal-modal-title" variant="h6" component="h2"> Password Generator </Typography>
+                        {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> Select the criteria for a random password to be made </Typography> */}
+                        <Typography id="title" sx={{ mt: 2 }}> Generated password filler </Typography>
+                        <Typography className='password-display' sx={{ mt: 2, mb: 2 }}> Number of Characters </Typography>
 
+                        <form onSubmit={handleSubmit}>
                             <FormControl >
-                                <FormGroup aria-label="position">
-                                <FormGroup row>
-                                    <TextField
-                                        type='range'
-                                        min="1"
-                                        max="50"
-                                        defaultValue="10"
-                                        className='characterAmountRange'
-                                    />
-                                    <TextField
-                                        type='number'
-                                        min="1"
-                                        max="50"
-                                        defaultValue="10"
-                                        className='characterAmountNumber'
-                                    />
-                                    </FormGroup>
+                                <FormGroup id="form" aria-label="position" >
+                                    <div id="character-amount-container">
+
+                                        <TextField
+                                            className='number-range'
+                                            type='range'
+                                            min="8"
+                                            max="50"
+                                            defaultValue={value}
+                                            onChange={(event) => setValue(event.target.value)}
+                                            id='characterAmountRange'
+                                        />
+
+                                        <TextField
+                                            className='number-input'
+                                            type='number'
+                                            min="8"
+                                            max="50"
+                                            defaultValue={value}
+                                            onChange={(event) => setValue(event.target.value)}
+                                            id='characterAmountNumber'
+                                        />
+                                    </div>
+                                    <div>
+
+                                    </div>
                                     <FormControlLabel
                                         // value="top"
                                         control={<Checkbox />}
@@ -91,13 +110,14 @@ function PasswordGenerator() {
                                         label="Include Symbols"
                                         labelPlacement="top"
                                     />
-                                    <Button type='submit'>Generate Password</Button>
+                                    <Button variant="contained" id='generate-password-button' type='submit'>Generate Password</Button>
                                 </FormGroup>
                             </FormControl>
-                        </Box>
-                    </Modal>
+                        </form>
+                    </Box>
+                </Modal>
 
-                
+
             </div>
         </>
     )

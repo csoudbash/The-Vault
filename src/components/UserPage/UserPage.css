@@ -1,15 +1,23 @@
-.outerGrid{
-    
+/* .outerGrid{
+
     justify-content: center;
     border: 1px solid black;
-    margin: auto;
+    margin: 0;
     display: inline-flex;
     flex-direction: row;
-    flex-wrap: wrap;
-}
+    flex-wrap: wrap; */
+/* } */
 
-.innerAccountGrid{
+/* .innerAccountGrid{
   display: flex;
   flex-flow: row;
   border: 1px solid green;
-}
+  margin: 20px;
+} */
+/* .container{
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+} */

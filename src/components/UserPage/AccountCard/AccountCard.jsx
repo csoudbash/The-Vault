@@ -23,8 +23,8 @@ function AccountCard({ account }) {
 
     return (
         <>
-            
-                <Card className="accountCard" sx={{ width: 345 }}>
+            <Grid item  s={6} m={4}>
+                <Card className="accountCard">
                     <CardActionArea>
                         <CardContent>
                             <Typography>{account.account_description}</Typography>
@@ -36,11 +36,7 @@ function AccountCard({ account }) {
                         </CardContent>
                     </CardActionArea>
                 </Card>
-                {/* <Typography>{account.username}</Typography>
-                <Typography>{account.password}</Typography>
-                <Typography>{account.notes}</Typography> */}
-                {/* <Typography>{account.folder_name}</Typography> */}
-                {/* <Button onClick={handleOpen}>Edit</Button> */}
+            </Grid>
             
 
         </>

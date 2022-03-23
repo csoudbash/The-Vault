@@ -38,25 +38,25 @@ function UserPage() {
     <>
       <div className='passwordList'>
         <div>
-          <Grid className='outerGrid' >
+          <Grid container className='outerGrid'>
+
               {accounts.map((account, i) => (
-                <div key={i}>
-
-                  <AccountCard sx ={{ gap: 2, md: 4}} 
-                    key={i}
-                    account={account}
-                  />
-
-                </div>
+          
+                <AccountCard 
+                  key={i}
+                  account={account}
+                />
+           
               ))}
+
           </Grid>
         </div>
 
         <AddAccountForm />
+        <PasswordGenerator />
         {/* <AddFolderForm /> */}
 
         <Footer />
-        <PasswordGenerator/>
       </div>
     </>
   );
