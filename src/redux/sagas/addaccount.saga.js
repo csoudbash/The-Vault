@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function* postAddedAccount (action) {
     
-    console.log(action.payload);
+    // console.log(action.payload);
     try{
         yield axios.post('/api/account', action.payload)
         yield put ({type: 'GET_ACCOUNTS'})

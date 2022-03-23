@@ -38,7 +38,7 @@ function UserPage() {
     <>
       <div className='passwordList'>
         <div>
-          <Grid container className='outerGrid'>
+          <Grid container className='outerGrid' spacing={0}>
 
               {accounts.map((account, i) => (
           

@@ -11,6 +11,7 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 function EditAccount() {
 
@@ -24,33 +25,51 @@ function EditAccount() {
     const accountToEdit = useSelector((store) => store.editAccount.editAccountsReducer);
     const id = useSelector((store) => store.editAccount.editAccountsReducer.id);
     const history = useHistory();
-
-    const [open, setOpen] = React.useState(false);
+    
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const dispatch = useDispatch();
 
     const handleSubmit = () => {
-        dispatch({
-            type: 'UPDATE_ACCOUNT',
-            payload: {
-                id,
-                newUsername,
-                newPassword,
-                newAccountDescription,
-                newNotes,
+        swal({
+            title: "Are you sure?",
+            text: "Make sure the fields you have changed were meant to be altered, This will permanently change this account!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willEdit) => {
+              if (willEdit) {
+                dispatch({
+                type: 'UPDATE_ACCOUNT',
+                    payload: {
+                        id,
+                        newUsername,
+                        newPassword,
+                        newAccountDescription,
+                        newNotes,
+                    }
+                })
+                swal("The Account has been updated!", {
+                icon: "success"
+              });
+            } else {
+                swal("Changes have not been saved");
             }
-        })
+        });
         // handleClose();
         history.push('/user');
     }
 
     const handleDelete = () => {
-        dispatch({
-            type:'DELETE_ACCOUNT',
-            payload: id,
-        })
+        swal("The Account has been updated!", {
+            icon: "success"});
+        // dispatch({
+        //     type:'DELETE_ACCOUNT',
+        //     payload: id,
+        // })
         // handleClose();
         history.push('/user');
     }

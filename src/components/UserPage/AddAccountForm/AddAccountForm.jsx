@@ -27,7 +27,7 @@ function AddAccountForm() {
     const dispatch = useDispatch();
 
     const handleSubmit = () => {
-        console.log('hello');
+        // console.log('hello');
         dispatch({
             type: 'ADD_ACCOUNT_POST',
             payload: {
