@@ -1,18 +1,25 @@
 import React from 'react';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import './UserPage.css'
+
 import AddAccountForm from './AddAccountForm/AddAccountForm';
 import AddFolderForm from './AddFolderForm/AddFolderForm';
+import AccountCard from './AccountCard/AccountCard';
+import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
+
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Footer from '../Footer/Footer';
-import { Typography } from '@mui/material';
-import AccountCard from './AccountCard/AccountCard';
-import EditAccount from './EditAccount/EditAccount';
+import { autocompleteClasses, Typography } from '@mui/material';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import { styled } from '@mui/material/styles';
+
 function UserPage() {
+
+
 
   const user = useSelector((store) => store.user);
   const accounts = useSelector((store) => store.accounts.AccountsReducer)
@@ -31,18 +38,22 @@ function UserPage() {
     <>
       <div className='passwordList'>
         <div>
-          {accounts.map((account, i) => (
-            <div key={i}>
-              {/* <p>{account.username}</p> */}
-              <AccountCard
-                key={i}
-                account={account}
-              />
-            </div>
-          ))}
+          <Grid container className='outerGrid' spacing={0}>
+
+              {accounts.map((account, i) => (
+          
+                <AccountCard 
+                  key={i}
+                  account={account}
+                />
+           
+              ))}
+
+          </Grid>
         </div>
 
         <AddAccountForm />
+        <PasswordGenerator />
         {/* <AddFolderForm /> */}
 
         <Footer />

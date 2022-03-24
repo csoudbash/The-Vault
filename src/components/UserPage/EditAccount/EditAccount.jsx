@@ -11,42 +11,64 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert';
 
 function EditAccount() {
 
-    const [newUsername, setNewUsername] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [newAccountDescription, setNewAccountDescription] = useState('');
-    const [newNotes, setNewNotes] = useState('');
+    const accountToEdit = useSelector((store) => store.editAccount.editAccountsReducer);
+    const id = useSelector((store) => store.editAccount.editAccountsReducer.id);
+    
+    const [newUsername, setNewUsername] = useState(accountToEdit.username);
+    const [newPassword, setNewPassword] = useState(accountToEdit.password);
+    const [newAccountDescription, setNewAccountDescription] = useState(accountToEdit.account_description);
+    const [newNotes, setNewNotes] = useState(accountToEdit.notes);
+    const [newUrl, setNewUrl] = useState(accountToEdit.url);
     // const [newFolder, setNewFolder] = useState('');
 
     // const folders = useSelector((store) => store.folders.FoldersReducer);
-    const accountToEdit = useSelector((store) => store.editAccount.editAccountsReducer);
-    const id = useSelector((store) => store.editAccount.editAccountsReducer.id);
     const history = useHistory();
-
-    const [open, setOpen] = React.useState(false);
+    
+    const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const dispatch = useDispatch();
 
     const handleSubmit = () => {
-        dispatch({
-            type: 'UPDATE_ACCOUNT',
-            payload: {
-                id,
-                newUsername,
-                newPassword,
-                newAccountDescription,
-                newNotes,
+        swal({
+            title: "Are you sure?",
+            text: "Make sure the fields you have changed were meant to be altered, This will permanently change this account!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willEdit) => {
+              if (willEdit) {
+                dispatch({
+                type: 'UPDATE_ACCOUNT',
+                    payload: {
+                        id,
+                        newUsername,
+                        newPassword,
+                        newAccountDescription,
+                        newNotes,
+                        newUrl,
+                    }
+                })
+                history.push('/user');
+                swal("The Account has been updated!", {
+                icon: "success"
+              });
+            } else {
+                swal("Changes have not been saved");
             }
-        })
+        });
         // handleClose();
-        history.push('/user');
     }
 
     const handleDelete = () => {
+        swal("The Account has been deleted!", {
+            icon: "success"});
         dispatch({
             type:'DELETE_ACCOUNT',
             payload: id,
@@ -82,7 +104,7 @@ function EditAccount() {
                 autoComplete="off"
             >
                 <Typography id="modal-modal-title" variant="h6" component="h2"> View/ Edit account </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}> yes </Typography>
+                {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>  </Typography> */}
                 <TextField
                     sx={{ mt: 2 }}
                     required
@@ -101,7 +123,6 @@ function EditAccount() {
                 />
                 <TextField
                     sx={{ mt: 2 }}
-                    required
                     id="outlined-password-input"
                     label="Account Description"
                     defaultValue={accountToEdit.account_description}
@@ -109,12 +130,19 @@ function EditAccount() {
                 />
                 <TextField
                     sx={{ mt: 2 }}
-                    required
                     id="outlined-password-input"
                     label="Notes"
                     defaultValue={accountToEdit.notes}
                     onChange={(event) => setNewNotes(event.target.value)}
                 />
+                 <TextField
+                    sx={{ mt: 2 }}
+                    id="outlined-password-input"
+                    label="Url"
+                    defaultValue={accountToEdit.url}
+                    onChange={(event) => setNewUrl(event.target.value)}
+                />
+
 
                 {/* <InputLabel id="folder-label">Folder</InputLabel>
                     <Select

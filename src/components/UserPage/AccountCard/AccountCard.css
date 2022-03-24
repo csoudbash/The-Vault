@@ -1,0 +1,17 @@
+.accountCardTop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.accountCardBottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .accountDescription{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */

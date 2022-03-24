@@ -1,4 +1,21 @@
-.passwordList{
-        
+.outerGrid{
+
     justify-content: center;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
 }
+
+/* .innerAccountGrid{
+  display: flex;
+  flex-flow: row;
+  border: 1px solid green;
+  margin: 20px;
+} */
+/* .container{
+
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    
+} */
