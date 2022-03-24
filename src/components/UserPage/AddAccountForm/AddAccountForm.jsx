@@ -92,7 +92,7 @@ function AddAccountForm() {
                         alignItems="center"
                     >
                         <Typography id="modal-modal-title" variant="h6" component="h2"> Add Account </Typography>
-                        <p>folder local: {JSON.stringify(folder)}</p>
+                        {/* <p>folder local: {JSON.stringify(folder)}</p> */}
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}> Enter in the Account you would like to add below </Typography>
                         <TextField
                             sx={{ mt: 2 }}
