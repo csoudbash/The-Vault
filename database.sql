@@ -23,4 +23,8 @@ CREATE TABLE "accounts" (
 	"notes" VARCHAR(1000) DEFAULT NULL,
 	"url" VARCHAR(1000) DEFAULT NULL,
 	"folder_id" INT 
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> master

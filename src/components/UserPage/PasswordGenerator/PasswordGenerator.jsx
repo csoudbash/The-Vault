@@ -11,13 +11,19 @@ import FormLabel from '@mui/material/FormLabel';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import Fab from '@mui/material/Fab';
+
 import React from 'react';
-import { useState } from "react";
+import { useState, useRef } from "react";
 function PasswordGenerator() {
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const [password, setPassword] = useState('');
+    const passwordRef = useRef(null);
 
     const [value, setValue] = useState(8)
 
@@ -34,17 +40,26 @@ function PasswordGenerator() {
         p: 6, //padding
     };
 
-    const handleSubmit = () => {
+    const generateNewPassword= () => {
         console.log('hello!');
+       
+        
     }
-
+    
+    const copyClipBoard = () => {
+    
+    }
 
     return (
         <>
             <div id='passwordGeneratorBody'>
 
 
-                <Button onClick={handleOpen}>Password Generator</Button>
+                {/* <Button onClick={handleOpen}>Password Generator</Button> */}
+                <Fab onClick={handleOpen} variant="extended" size="medium" color="primary">
+                    {/* < AddCircleOutlineOutlinedIcon sx={{ ml: 1 }} /> */}
+                    Password Generator
+                </Fab>
                 <Modal
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
@@ -61,59 +76,66 @@ function PasswordGenerator() {
 
                         <Typography id="modal-modal-title" variant="h6" component="h2"> Password Generator </Typography>
                         {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}> Select the criteria for a random password to be made </Typography> */}
-                        <Typography id="title" sx={{ mt: 2 }}> Generated password filler </Typography>
-                        <Typography className='password-display' sx={{ mt: 2, mb: 2 }}> Number of Characters </Typography>
+                            <TextField
+                                ref={passwordRef}
+                                type="text"
+                                value={password}
+                                className="password-display-input"
+                                readOnly
+                            /> 
+                            
+                            <Typography className='password-display' sx={{ mt: 2, mb: 2 }}> Number of Characters </Typography>
 
-                        <form onSubmit={handleSubmit}>
-                            <FormControl >
-                                <FormGroup id="form" aria-label="position" >
-                                    <div id="character-amount-container">
+                            {/* <form onSubmit={generateNewPassword}> */}
+                                <FormControl >
+                                    <FormGroup id="form" aria-label="position" >
+                                        <div id="character-amount-container">
 
-                                        <TextField
-                                            className='number-range'
-                                            type='range'
-                                            min="8"
-                                            max="50"
-                                            defaultValue={value}
-                                            onChange={(event) => setValue(event.target.value)}
-                                            id='characterAmountRange'
+                                            <TextField
+                                                className='number-range'
+                                                type='range'
+                                                min="8"
+                                                max="50"
+                                                defaultValue={value}
+                                                onChange={(event) => setValue(event.target.value)}
+                                                id='characterAmountRange'
+                                            />
+
+                                            <TextField
+                                                className='number-input'
+                                                type='number'
+                                                min="8"
+                                                max="50"
+                                                defaultValue={value}
+                                                onChange={(event) => setValue(event.target.value)}
+                                                id='characterAmountNumber'
+                                            />
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                        <FormControlLabel
+                                            // value="top"
+                                            control={<Checkbox />}
+                                            label="Include Uppercase"
+                                            labelPlacement="top"
                                         />
-
-                                        <TextField
-                                            className='number-input'
-                                            type='number'
-                                            min="8"
-                                            max="50"
-                                            defaultValue={value}
-                                            onChange={(event) => setValue(event.target.value)}
-                                            id='characterAmountNumber'
+                                        <FormControlLabel
+                                            // value="top"
+                                            control={<Checkbox />}
+                                            label="Include Numbers"
+                                            labelPlacement="top"
                                         />
-                                    </div>
-                                    <div>
-
-                                    </div>
-                                    <FormControlLabel
-                                        // value="top"
-                                        control={<Checkbox />}
-                                        label="Include Uppercase"
-                                        labelPlacement="top"
-                                    />
-                                    <FormControlLabel
-                                        // value="top"
-                                        control={<Checkbox />}
-                                        label="Include Numbers"
-                                        labelPlacement="top"
-                                    />
-                                    <FormControlLabel
-                                        // value="top"
-                                        control={<Checkbox />}
-                                        label="Include Symbols"
-                                        labelPlacement="top"
-                                    />
-                                    <Button variant="contained" id='generate-password-button' type='submit'>Generate Password</Button>
-                                </FormGroup>
-                            </FormControl>
-                        </form>
+                                        <FormControlLabel
+                                            // value="top"
+                                            control={<Checkbox />}
+                                            label="Include Symbols"
+                                            labelPlacement="top"
+                                        />
+                                        <Button variant="contained" id='generate-password-button' type='submit'>Generate Password</Button>
+                                    </FormGroup>
+                                </FormControl>
+                            {/* </form> */}
                     </Box>
                 </Modal>
 

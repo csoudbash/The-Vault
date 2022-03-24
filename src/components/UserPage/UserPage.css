@@ -1,3 +1,7 @@
+body{
+    background-color: #DAD3D3;
+    /* opacity: 0.7; */
+}
 .outerGrid{
 
     justify-content: center;
@@ -6,16 +10,26 @@
     flex-wrap: wrap; 
 }
 
-/* .innerAccountGrid{
-  display: flex;
-  flex-flow: row;
-  border: 1px solid green;
-  margin: 20px;
-} */
-/* .container{
-
-    display: grid;
+.button-organizer{
+    /* background-color: aquamarine; */
+    margin: auto;
+    display:flex;
     justify-content: center;
     align-items: center;
-    
-} */
+    width: 50%;
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+}
+.button-bar{
+    background-color: #D02E2E ;
+    margin: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 10;
+    bottom: 0;
+    position: fixed;
+    height: 70px;
+}
