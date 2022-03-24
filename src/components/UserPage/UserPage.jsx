@@ -54,7 +54,7 @@ function UserPage() {
 
         <AddAccountForm />
         <PasswordGenerator />
-        {/* <AddFolderForm /> */}
+        <AddFolderForm />
 
         <Footer />
       </div>

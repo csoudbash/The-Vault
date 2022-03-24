@@ -8,19 +8,19 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-// router.post('/addfolder', (req,res) => {
-// console.log('hello');
-// let userId = Number(req.user.id)
-// console.log(req.user.id);
-// const queryText = `INSERT INTO "folders" ("user_id", "folder_name")
-// VALUES ($1, 'none');`;
-// pool
-//   .query(queryText, [userId])
-//   .then(() => res.sendStatus(201))
-//   .catch((error) => {
-//     console.log(error, 'rut ro scoob');
-//   })
-// })
+router.post('/addfolder', (req,res) => {
+console.log('hello');
+let userId = Number(req.user.id)
+console.log(req.user.id);
+const queryText = `INSERT INTO "folders" ("user_id", "folder_name")
+VALUES ($1, 'none');`;
+pool
+  .query(queryText, [userId])
+  .then(() => res.sendStatus(201))
+  .catch((error) => {
+    console.log(error, 'rut ro scoob');
+  })
+})
 
 
 // Handles Ajax request for user information if user is authenticated

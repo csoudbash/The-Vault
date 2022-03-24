@@ -8,9 +8,9 @@ function* UpdateAccount(action) {
         axios.put(`/api/account/${action.payload.id}`, action.payload)
             .then(response => {
 
-                put({ type: 'GET_ACCOUNTS' })
-                dispatch({ type: 'EDIT_CLEAR' });
-                history.push('/');
+                put({ type: 'GET_ACCOUNTS' });
+                put({ type: 'EDIT_CLEAR' });
+                
             })
             .catch(error => {
                 console.log('error on PUT: ', error);

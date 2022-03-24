@@ -23,9 +23,9 @@ function EditAccount() {
     const [newAccountDescription, setNewAccountDescription] = useState(accountToEdit.account_description);
     const [newNotes, setNewNotes] = useState(accountToEdit.notes);
     const [newUrl, setNewUrl] = useState(accountToEdit.url);
-    // const [newFolder, setNewFolder] = useState('');
+    const [newFolder, setNewFolder] = useState(accountToEdit.folder_id);
 
-    // const folders = useSelector((store) => store.folders.FoldersReducer);
+    const folders = useSelector((store) => store.folders.FoldersReducer);
     const history = useHistory();
     
     const [open, setOpen] = useState(false);
@@ -53,6 +53,7 @@ function EditAccount() {
                         newAccountDescription,
                         newNotes,
                         newUrl,
+                        newFolder,
                     }
                 })
                 history.push('/user');
@@ -144,24 +145,36 @@ function EditAccount() {
                 />
 
 
-                {/* <InputLabel id="folder-label">Folder</InputLabel>
+                <InputLabel id="folder-label">Folder</InputLabel>
                     <Select
                         labelId="folder-label"
                         id="folders"
-                        value={accountToEdit.folder ? accountToEdit.folder : "" }
-                        defaultValue={accountToEdit.folder}
+                        value={newFolder}
+                        // defaultValue={accountToEdit.folder}
                         label="folder"
                         onChange={(event) => setNewFolder(event.target.value)}
                         >
-
-                        <div>
-                        {folders.map((folder, i) => (
-                                <div key={i}>
-                                    <MenuItem value={folder.id}> <em>{folder.folder_name}</em> </MenuItem>
-                                </div>
-                            
+                        
+                        {folders.map((thisFolder, i) => (
+                                    <MenuItem  key={i} value={thisFolder.id}> <em>{thisFolder.folder_name}</em> </MenuItem>
                               ))}
-                        </div>
+                        
+                    </Select>
+                    {/* <Select
+                    labelId="folder-label"
+                    id="folders"
+                    // open={open}
+                    // onClose={handleClose}
+                    // onOpen={handleOpen}
+                    value={folder}
+                    label="folder"
+                    onChange={testing}
+                    >
+                    
+                    {folders.map((thisFolder, i) => (                        
+                        <MenuItem key={i} value={thisFolder.id}> <em>{thisFolder.folder_name}</em> </MenuItem>                        
+                        ))}
+                        
                     </Select> */}
 
 
