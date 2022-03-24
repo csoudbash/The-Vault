@@ -15,17 +15,17 @@ import swal from 'sweetalert';
 
 function EditAccount() {
 
+    const accountToEdit = useSelector((store) => store.editAccount.editAccountsReducer);
+    const id = useSelector((store) => store.editAccount.editAccountsReducer.id);
     
-    const [newUsername, setNewUsername] = useState('');
-    const [newPassword, setNewPassword] = useState('');
-    const [newAccountDescription, setNewAccountDescription] = useState('');
-    const [newNotes, setNewNotes] = useState('');
-    const [newUrl, setNewUrl] = useState('');
+    const [newUsername, setNewUsername] = useState(accountToEdit.username);
+    const [newPassword, setNewPassword] = useState(accountToEdit.password);
+    const [newAccountDescription, setNewAccountDescription] = useState(accountToEdit.account_description);
+    const [newNotes, setNewNotes] = useState(accountToEdit.notes);
+    const [newUrl, setNewUrl] = useState(accountToEdit.url);
     // const [newFolder, setNewFolder] = useState('');
 
     // const folders = useSelector((store) => store.folders.FoldersReducer);
-    const accountToEdit = useSelector((store) => store.editAccount.editAccountsReducer);
-    const id = useSelector((store) => store.editAccount.editAccountsReducer.id);
     const history = useHistory();
     
     const [open, setOpen] = useState(false);
@@ -67,12 +67,12 @@ function EditAccount() {
     }
 
     const handleDelete = () => {
-        swal("The Account has been updated!", {
+        swal("The Account has been deleted!", {
             icon: "success"});
-        // dispatch({
-        //     type:'DELETE_ACCOUNT',
-        //     payload: id,
-        // })
+        dispatch({
+            type:'DELETE_ACCOUNT',
+            payload: id,
+        })
         // handleClose();
         history.push('/user');
     }

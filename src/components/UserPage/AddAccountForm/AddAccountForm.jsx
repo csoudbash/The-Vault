@@ -10,6 +10,8 @@ import InputLabel from '@mui/material/InputLabel';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import swal from 'sweetalert';
+
 function AddAccountForm() {
 
     const [username, setUsername] = useState('');
@@ -29,6 +31,8 @@ function AddAccountForm() {
 
     const handleSubmit = () => {
         // console.log('hello');
+        swal("The Account has been updated!", {
+            icon: "success"});
         dispatch({
             type: 'ADD_ACCOUNT_POST',
             payload: {
@@ -40,6 +44,12 @@ function AddAccountForm() {
                 // folder,
             }
         })
+        handleClose();
+        setUsername('');
+        setPassword('');
+        setAccountDescription('');
+        setNotes('');
+        setUrl('');
     }
     const style = {
         position: 'absolute',
@@ -111,6 +121,8 @@ function AddAccountForm() {
                         <TextField
                             sx={{ mt: 2 }}
                             required
+                            multiline={true}
+                            rows={4}
                             id="outlined-password-input"
                             label="Notes"
                             value={notes}
