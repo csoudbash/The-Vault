@@ -37,24 +37,30 @@ function UserPage() {
   return (
     <>
       <div className='passwordList'>
+        <div className='button-bar'>
+          <div className='button-organizer'>
+
+            <AddAccountForm />
+            <PasswordGenerator />
+            <AddFolderForm />
+
+          </div>
+        </div>
         <div>
           <Grid container className='outerGrid' spacing={0}>
 
-              {accounts.map((account, i) => (
-          
-                <AccountCard 
-                  key={i}
-                  account={account}
-                />
-           
-              ))}
+            {accounts.map((account, i) => (
+
+              <AccountCard
+                key={i}
+                account={account}
+              />
+
+            ))}
 
           </Grid>
         </div>
 
-        <AddAccountForm />
-        <PasswordGenerator />
-        {/* <AddFolderForm /> */}
 
         <Footer />
       </div>

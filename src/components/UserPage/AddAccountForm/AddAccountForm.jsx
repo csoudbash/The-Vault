@@ -11,7 +11,10 @@ import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import Fab from '@mui/material/Fab';
 import swal from 'sweetalert';
+
+import './AddAccountForm.css'
 
 function AddAccountForm() {
 
@@ -19,7 +22,7 @@ function AddAccountForm() {
     const [password, setPassword] = useState('');
     const [accountDescription, setAccountDescription] = useState('');
     const [notes, setNotes] = useState('');
-    const [url, setUrl]= useState('');
+    const [url, setUrl] = useState('');
     // const [folder, setFolder] = useState('');
 
     // const folders = useSelector((store) => store.folders.FoldersReducer)
@@ -33,7 +36,8 @@ function AddAccountForm() {
     const handleSubmit = () => {
         // console.log('hello');
         swal("The Account has been updated!", {
-            icon: "success"});
+            icon: "success"
+        });
         dispatch({
             type: 'ADD_ACCOUNT_POST',
             payload: {
@@ -67,7 +71,13 @@ function AddAccountForm() {
 
     return (
         <>
-            <Button onClick={handleOpen}>Add Account</Button>
+            {/* <Button onClick={handleOpen}>Add Account</Button> */}
+            <div className='fab-account'>
+                <Fab onClick={handleOpen} variant="extended" size="medium" color="primary">
+                    < AddCircleOutlineOutlinedIcon sx={{ ml: 1 }} />
+                    Add Account
+                </Fab>
+            </div>
             <Modal
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
@@ -112,13 +122,13 @@ function AddAccountForm() {
                             value={accountDescription}
                             onChange={(event) => setAccountDescription(event.target.value)}
                         />
-                            <TextField
-                                sx={{ mt: 2 }}
-                                required
-                                label="Login Url"
-                                value={url}
-                                onChange={(event) => setUrl(event.target.value)}
-                            />
+                        <TextField
+                            sx={{ mt: 2 }}
+                            required
+                            label="Login Url"
+                            value={url}
+                            onChange={(event) => setUrl(event.target.value)}
+                        />
                         <TextField
                             sx={{ mt: 2 }}
                             required

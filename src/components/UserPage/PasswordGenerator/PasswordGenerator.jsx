@@ -11,6 +11,9 @@ import FormLabel from '@mui/material/FormLabel';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import Fab from '@mui/material/Fab';
+
 import React from 'react';
 import { useState } from "react";
 function PasswordGenerator() {
@@ -44,7 +47,11 @@ function PasswordGenerator() {
             <div id='passwordGeneratorBody'>
 
 
-                <Button onClick={handleOpen}>Password Generator</Button>
+                {/* <Button onClick={handleOpen}>Password Generator</Button> */}
+                <Fab onClick={handleOpen} variant="extended" size="medium" color="primary">
+                    {/* < AddCircleOutlineOutlinedIcon sx={{ ml: 1 }} /> */}
+                    Password Generator
+                </Fab>
                 <Modal
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"

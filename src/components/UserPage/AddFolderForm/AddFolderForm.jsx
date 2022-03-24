@@ -10,6 +10,9 @@ import InputLabel from '@mui/material/InputLabel';
 import Modal from '@mui/material/Modal';
 import Typography from '@mui/material/Typography';
 
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import Fab from '@mui/material/Fab';
+
 function AddFolderForm() {// function for adding a new folder to the database for retrieval
 
 
@@ -44,7 +47,11 @@ function AddFolderForm() {// function for adding a new folder to the database fo
 
     return (
         <>
-            <Button onClick={handleOpen}>Add New Folder</Button>
+            {/* <Button onClick={handleOpen}>Add New Folder</Button> */}
+            <Fab onClick={handleOpen} variant="extended" size="medium" color="primary">
+                    < AddCircleOutlineOutlinedIcon sx={{ ml: 1 }} />
+                    Add New Folder
+                </Fab>
             <Modal
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
