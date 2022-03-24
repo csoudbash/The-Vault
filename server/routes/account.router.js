@@ -14,10 +14,10 @@ router.get('/get/accounts', (req, res) => {
   if (req.isAuthenticated()) {
     let userId = Number(req.user.id)
     // console.log(userId);
-    const queryText = `SELECT "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "url", "folder_name" FROM "accounts"
+    const queryText = `SELECT "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "url", "folder_name", "folders"."id" AS "folder_id" FROM "accounts"
     JOIN "folders" ON "folders"."id" = "accounts"."folder_id" 
     JOIN "user" ON "folders"."user_id" = $1
-    GROUP BY "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name";`;
+    GROUP BY "accounts"."id", "account_description", "accounts"."username", "accounts"."password", "notes", "folder_name", "folders"."id";`;
     pool
       .query(queryText, [userId])
       .then((result) => {
@@ -67,10 +67,11 @@ router.put('/:id', (req, res) => {
     let accountDescription = req.body.newAccountDescription;
     let notes = req.body.newNotes;
     let url = req.body.newUrl;
+    let folder = req.body.newFolder;
 
     const idToUpdate = req.params.id;
-    const sqlText = `UPDATE "accounts" SET "username" = $1, "password" = $2, "notes" = $3, "account_description" = $4 , "url" = $5 WHERE "id" = $6;`;
-    pool.query(sqlText, [username, password, notes, accountDescription, url, idToUpdate])
+    const sqlText = `UPDATE "accounts" SET "username" = $1, "password" = $2, "notes" = $3, "account_description" = $4 , "url" = $5, "folder_id" = $6 WHERE "id" = $7;`;
+    pool.query(sqlText, [username, password, notes, accountDescription, url, folder, idToUpdate])
       .then((result) => {
         res.sendStatus(200);
       })

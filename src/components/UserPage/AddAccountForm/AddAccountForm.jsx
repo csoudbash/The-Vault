@@ -29,6 +29,11 @@ function AddAccountForm() {
 
     const dispatch = useDispatch();
 
+    const testing = (event) => {
+        console.log('clicked folder', event);
+        setFolder(event.target.value)
+    }
+
     const handleSubmit = () => {
         // console.log('hello');
         swal("The Account has been updated!", {
@@ -50,6 +55,7 @@ function AddAccountForm() {
         setAccountDescription('');
         setNotes('');
         setUrl('');
+        setFolder('');
     }
     const style = {
         position: 'absolute',
@@ -86,6 +92,7 @@ function AddAccountForm() {
                         alignItems="center"
                     >
                         <Typography id="modal-modal-title" variant="h6" component="h2"> Add Account </Typography>
+                        <p>folder local: {JSON.stringify(folder)}</p>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}> Enter in the Account you would like to add below </Typography>
                         <TextField
                             sx={{ mt: 2 }}
@@ -137,15 +144,13 @@ function AddAccountForm() {
                     // onOpen={handleOpen}
                     value={folder}
                     label="folder"
-                    onChange={(event) => setFolder(event.target.value)}
+                    onChange={testing}
                     >
-                    <div>
-                    {folders.map((folder, i) => (
-                        <div key={i}>
-                        <MenuItem value={folder.id}> <em>{folder.folder_name}</em> </MenuItem>
-                        </div>
+                    
+                    {folders.map((thisFolder, i) => (                        
+                        <MenuItem key={i} value={thisFolder.id}> <em>{thisFolder.folder_name}</em> </MenuItem>                        
                         ))}
-                        </div>
+                        
                     </Select>
 
 
