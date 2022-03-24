@@ -23,9 +23,9 @@ function EditAccount() {
     const [newAccountDescription, setNewAccountDescription] = useState(accountToEdit.account_description);
     const [newNotes, setNewNotes] = useState(accountToEdit.notes);
     const [newUrl, setNewUrl] = useState(accountToEdit.url);
-    // const [newFolder, setNewFolder] = useState('');
+    const [newFolder, setNewFolder] = useState('');
 
-    // const folders = useSelector((store) => store.folders.FoldersReducer);
+    const folders = useSelector((store) => store.folders.FoldersReducer);
     const history = useHistory();
     
     const [open, setOpen] = useState(false);
@@ -144,7 +144,7 @@ function EditAccount() {
                 />
 
 
-                {/* <InputLabel id="folder-label">Folder</InputLabel>
+                <InputLabel id="folder-label">Folder</InputLabel>
                     <Select
                         labelId="folder-label"
                         id="folders"
@@ -162,7 +162,7 @@ function EditAccount() {
                             
                               ))}
                         </div>
-                    </Select> */}
+                    </Select>
 
 
                 <Button onClick={handleSubmit} variant="outlined">conditionally rendered edit button</Button>

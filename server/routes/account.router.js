@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
     const password = req.body.password;
     const accountDescription = req.body.accountDescription;
     const notes = req.body.notes
-    const folder = 1// req.body.folder currently set to 1 because 1 is a folder connected to the csoudbash account. this will need to be addressed later. 
+    const folder = req.body.folder// req.body.folder currently set to 1 because 1 is a folder connected to the csoudbash account. this will need to be addressed later. 
     const accountUrl = req.body.url
 
     const queryText = `INSERT INTO "accounts" ("account_description", "username", "password", "notes", "url", "folder_id")

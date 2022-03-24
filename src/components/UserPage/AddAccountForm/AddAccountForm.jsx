@@ -19,9 +19,9 @@ function AddAccountForm() {
     const [accountDescription, setAccountDescription] = useState('');
     const [notes, setNotes] = useState('');
     const [url, setUrl]= useState('');
-    // const [folder, setFolder] = useState('');
+    const [folder, setFolder] = useState('');
 
-    // const folders = useSelector((store) => store.folders.FoldersReducer)
+    const folders = useSelector((store) => store.folders.FoldersReducer)
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -41,7 +41,7 @@ function AddAccountForm() {
                 accountDescription,
                 notes,
                 url,
-                // folder,
+                folder,
             }
         })
         handleClose();
@@ -128,7 +128,7 @@ function AddAccountForm() {
                             value={notes}
                             onChange={(event) => setNotes(event.target.value)}
                         />
-                        {/* <InputLabel id="folder-label">Folder</InputLabel>
+                        <InputLabel id="folder-label">Folder</InputLabel>
                     <Select
                     labelId="folder-label"
                     id="folders"
@@ -146,7 +146,7 @@ function AddAccountForm() {
                         </div>
                         ))}
                         </div>
-                    </Select> */}
+                    </Select>
 
 
                         <Button onClick={handleSubmit} variant="outlined">Submit Account</Button>
