@@ -1,0 +1,23 @@
+.accordian{
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap;  */
+    width: 90%
+}
+
+.accoridian-details{
+    justify-content: center;
+    display: inline;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
+
+.outerGrid{
+
+    justify-content: center;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+}
