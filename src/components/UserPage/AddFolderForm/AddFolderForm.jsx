@@ -29,6 +29,7 @@ function AddFolderForm() {// function for adding a new folder to the database fo
             type: 'SEND_NEW_FOLDER',
             payload: { folder: folder }
         })
+        handleClose();
     }
 
 

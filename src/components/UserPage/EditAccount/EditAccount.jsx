@@ -57,6 +57,9 @@ function EditAccount() {
                     }
                 })
                 history.push('/user');
+                // dispatch({
+                //     type: 'EDIT_ACCOUNT_CLEAR'
+                // })
                 swal("The Account has been updated!", {
                 icon: "success"
               });
