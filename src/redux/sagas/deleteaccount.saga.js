@@ -5,8 +5,8 @@ function* deleteAccount (action) {
     console.log(action.payload);
     try {
         yield axios.delete(`/api/account/${action.payload}`);
-
-        // yield put({type: 'FETCH_SHELF'})
+        put({ type: 'GET_ACCOUNTS' });
+       
     } catch {
         console.log("error, rut ro scoob", action.payload);
     }

@@ -8,6 +8,7 @@ import AddAccountForm from './AddAccountForm/AddAccountForm';
 import AddFolderForm from './AddFolderForm/AddFolderForm';
 import AccountCard from './AccountCard/AccountCard';
 import PasswordGenerator from './PasswordGenerator/PasswordGenerator';
+import FolderRender from './FolderRender/FolderRender';
 
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
