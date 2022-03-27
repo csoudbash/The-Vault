@@ -48,18 +48,18 @@ function UserPage() {
           </div>
         </div>
         <div>
-          <Grid container className='outerGrid' spacing={0}>
-
-            {accounts.map((account, i) => (
+          {/* <Grid container className='outerGrid' spacing={0}> */}
+            <FolderRender/>
+            {/* {accounts.map((account, i) => (
 
               <AccountCard
                 key={i}
                 account={account}
               />
 
-            ))}
+            ))} */}
 
-          </Grid>
+          {/* </Grid> */}
         </div>
 
 

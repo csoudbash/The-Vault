@@ -2,13 +2,7 @@ body{
     background-color: #DAD3D3;
     /* opacity: 0.7; */
 }
-.outerGrid{
 
-    justify-content: center;
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap; 
-}
 
 .button-organizer{
     /* background-color: aquamarine; */
