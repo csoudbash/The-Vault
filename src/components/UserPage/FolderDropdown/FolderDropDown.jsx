@@ -21,12 +21,13 @@ function FolderDropdown({ folder }) {
         setExpanded(isExpanded ? panel : false);
     };
     // create array that we then reference for displaying the information of each account
+    let arrayOfAccounts = [];
+
     for (let account of accounts) {
         if(folder.id === account.folder_id){
             console.log("in for of loop",folder.folder_name);
-
+            arrayOfAccounts.push(account);
         }
-        
     }
 
 
@@ -46,15 +47,15 @@ function FolderDropdown({ folder }) {
                 <AccordionDetails className='accoridian-details'>
                     <Grid container className='outerGrid' spacing={0}>
                         
-                        {accounts.map((account, i) => (
+                        {arrayOfAccounts.map((account, i) => (
                             <AccountCard
                                 key={i}
                                 account={account}
-                                // folderId= {folder.id}
+                            // folderId= {folder.id}
                             />
 
                         ))}
-                        
+
                     </Grid>
                 </AccordionDetails>
             </Accordion>
